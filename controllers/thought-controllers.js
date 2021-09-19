@@ -34,7 +34,6 @@ postThought({body}, res){
     .then(dbThought => {
         console.log('====dbTHOUGHT====');
         console.log(dbThought);
-        const thoughtId = (dbThought._id).toString();
 
          User.findOneAndUpdate(
             { _id: userId},
@@ -50,25 +49,6 @@ postThought({body}, res){
     }).catch(err => res.status(400).json(err))
 }).catch(err => res.status(400).json(err))
 },
-
-
-// //POST thought
-// postThought({body}, res){
-//     const {thoughtText, username, userId} = body;
-//     console.log(thoughtText, username);
-
-//     Thought.create({thoughtText: thoughtText, username: username})
-//     .then(dbThought => {
-//         console.log('===DBTHOUGHT====');
-//         console.log(dbThought);
-//         if (!dbThought){
-//             res.status(404).json({message: 'User doesnt exist'})
-//         }
-//         res.json(dbThought)
-//     })
-//     .catch(err => res.status(400).json(err))
-// },
-
 
 //PUT-UPDATE thought by id
 updateThought({params, body}, res){
